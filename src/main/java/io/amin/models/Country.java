@@ -29,6 +29,7 @@ public class Country {
     @JoinColumn(name = "REGION_ID")
     Region region;
 
+//    Collections are not cached by default, and we need to explicitly mark them as cacheable.
     @OneToMany(mappedBy = "country", fetch = FetchType.EAGER)
 //    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Location> locations;

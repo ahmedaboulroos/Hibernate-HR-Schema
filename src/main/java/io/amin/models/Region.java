@@ -19,6 +19,18 @@ import javax.persistence.Table;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Region {
 
+    /*
+
+        In order to make an entity eligible for second-level caching,
+        we annotate it with Hibernate specific @org.hibernate.annotations.Cache annotation
+        and specify a cache concurrency strategy.
+
+        Some developers consider that it is a good convention
+        to add the standard @javax.persistence.Cacheable annotation as well
+        (although not required by Hibernate)
+
+    */
+
     @Id
     @Column(name = "REGION_ID", unique = true, nullable = false)
     private Integer id;
