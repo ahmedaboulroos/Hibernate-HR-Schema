@@ -1,8 +1,9 @@
 package io.amin.models;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +12,11 @@ import javax.persistence.Table;
 
 @Getter
 @Setter
+
 @Entity
 @Table(name = "REGIONS")
+
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Region {
 
     @Id
