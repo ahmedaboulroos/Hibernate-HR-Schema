@@ -16,13 +16,17 @@
         <class>io.amin.models.Region</class>
 
         <properties>
+            <!-- Database Connection Properties-->
             <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521/xe"/>
             <property name="javax.persistence.jdbc.user" value="hr"/>
             <property name="javax.persistence.jdbc.password" value="hr"/>
 
+            <!-- Enabling Second-Level Caching-->
             <property name="hibernate.cache.use_second_level_cache" value="true"/>
             <property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>
+
+            <!-- Dialect & Hibernate Specific Configs-->
             <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="none"/>
