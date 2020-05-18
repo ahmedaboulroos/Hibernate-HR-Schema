@@ -15,6 +15,8 @@ public class Location {
 
     @Id
     @Column(name = "LOCATION_ID", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "locations_generator")
+    @SequenceGenerator(name = "locations_generator", sequenceName = "LOCATIONS_SEQ", initialValue = 0, allocationSize = 100)
     private Integer id;
 
     @Column(name = "STREET_ADDRESS")
