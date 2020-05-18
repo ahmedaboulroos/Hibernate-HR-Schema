@@ -9,6 +9,7 @@ Learning Hibernate ORM through Mapping Oracle's HR Schema to Classes and perform
 - Perform CRUD Operations using JPA Entity Manager on the mapped entities.
 - Perform Queries against the database using JPQL and the Criteria API.
 - We leverage the JUnit Jupiter API to perform some tests.
+- We Demonstrate Second Level Caching on Entities and Collections within these Entities
 
 <br />
 
