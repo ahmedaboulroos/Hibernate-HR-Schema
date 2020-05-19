@@ -1,6 +1,7 @@
 package io.amin.models;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,12 +11,14 @@ import java.util.Set;
 
 @Getter
 @Setter
+@NoArgsConstructor
+
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
 
     @Id
-    @Column(name = "EMPLOYEE_ID", unique = true, nullable = false)
+    @Column(name = "EMPLOYEE_ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_generator")
     @SequenceGenerator(name = "employee_generator", sequenceName = "EMPLOYEES_SEQ", allocationSize = 1)
     private Integer id;
@@ -55,23 +58,5 @@ public class Employee {
 
     @OneToMany(mappedBy = "manager", fetch = FetchType.LAZY)
     private Set<Employee> subordinates = new HashSet<>();
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", hireDate=" + hireDate +
-                ", salary=" + salary +
-                ", commissionPct=" + commissionPct +
-                ((job != null) ? ", job.id=" + job.getId() : "job: null" )+
-                ((department != null) ? ", department.id=" + department.getId() : "department: null" )+
-                ((manager != null) ? ", manager.id=" + manager.getId() : "manager: null" )+
-                ((subordinates != null) ? ", subordinates.size=" + subordinates.size() : "subordinates: null" )+
-                '}';
-    }
 
 }

@@ -9,6 +9,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
+
 @Embeddable
 public class JobHistoryId implements Serializable {
 
@@ -18,13 +19,5 @@ public class JobHistoryId implements Serializable {
 
     @Column(name = "START_DATE")
     private LocalDate startDate;
-
-    @Override
-    public String toString() {
-        return "JobHistoryId{" +
-                "employee.id=" + employee.getId() +
-                ", startDate=" + startDate +
-                '}';
-    }
 
 }

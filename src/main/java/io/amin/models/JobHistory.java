@@ -1,6 +1,7 @@
 package io.amin.models;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -8,6 +9,8 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
+@NoArgsConstructor
+
 @Entity
 @Table(name = "JOB_HISTORY")
 public class JobHistory {
@@ -25,15 +28,5 @@ public class JobHistory {
     @ManyToOne
     @JoinColumn(name = "DEPARTMENT_ID")
     private Department department;
-
-    @Override
-    public String toString() {
-        return "JobHistory{" +
-                "jobHistoryId=" + jobHistoryId +
-                ", endDate=" + endDate +
-                ", job.id=" + job.getId() +
-                ", department.id=" + department.getId() +
-                '}';
-    }
 
 }

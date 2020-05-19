@@ -1,6 +1,7 @@
 package io.amin.models;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -11,6 +12,7 @@ import java.util.Set;
 
 @Getter
 @Setter
+@NoArgsConstructor
 
 @Entity
 @Table(name = "COUNTRIES")
@@ -19,29 +21,18 @@ import java.util.Set;
 public class Country {
 
     @Id
-    @Column(name = "COUNTRY_ID", unique = true, nullable = false)
+    @Column(name = "COUNTRY_ID")
     private String id;
 
     @Column(name = "COUNTRY_NAME")
     private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "REGION_ID")
     Region region;
 
-//    Collections are not cached by default, and we need to explicitly mark them as cacheable.
-    @OneToMany(mappedBy = "country", fetch = FetchType.EAGER)
-//    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @OneToMany(mappedBy = "country")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Location> locations;
-
-//    @Override
-//    public String toString() {
-//        return "Country{" +
-//                "id='" + id + '\'' +
-//                ", name='" + name + '\'' +
-//                ", region.id=" + region.getId() +
-//                ", locations.size=" + locations.size() +
-//                '}';
-//    }
 
 }

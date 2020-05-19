@@ -1,7 +1,7 @@
 package io.amin.models;
 
-import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,12 +10,14 @@ import java.util.Set;
 
 @Getter
 @Setter
+@NoArgsConstructor
+
 @Entity
 @Table(name = "JOBS")
 public class Job {
 
     @Id
-    @Column(name = "JOB_ID", unique = true, nullable = false)
+    @Column(name = "JOB_ID")
     private String id;
 
     @Column(name = "JOB_TITLE", nullable = false)
@@ -32,17 +34,5 @@ public class Job {
 
     @OneToMany(mappedBy = "job")
     private Set<JobHistory> jobHistories = new HashSet<>();
-
-    @Override
-    public String toString() {
-        return "Job{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", minSalary=" + minSalary +
-                ", maxSalary=" + maxSalary +
-                ", employees.size=" + employees.size() +
-                ", jobHistories.size=" + jobHistories.size() +
-                '}';
-    }
 
 }
