@@ -42,3 +42,14 @@ public class LocationTest {
     }
 
 }
+
+
+/*
+    > Default Fetching
+
+    @OneToOne       - Reference     -   EAGER
+    @ManyToOne      - Reference     -   EAGER
+    @OneToMany      - Collection    -   LAZY
+    @ManyToMany     - Collection    -   LAZY
+
+*/
